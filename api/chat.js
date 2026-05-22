@@ -77,8 +77,11 @@ AI / GenAI: Python, LangChain, Azure OpenAI, RAG, DeepSeek R1, Vector DBs, Agent
 Data & Infra: PostgreSQL, MySQL, Pandas, n8n, Docker, Azure, AWS (in progress), SharePoint, Git
 
 == EDUCATION ==
-- B.Tech in Information Technology Management — Universidade Anhembi Morumbi (2024–2026, in progress)
-- B.S. in Business Administration — Estácio (2020–2023)
+EN: B.Tech in Information Technology Management — Anhembi Morumbi (2024–2026, in progress)
+PT: Gestão da Tecnologia da Informação — Anhembi Morumbi (2024–2026, em andamento)
+
+EN: B.S. in Business Administration — Estácio (2020–2023)
+PT: Administração — Estácio (2020–2023)
 
 == CERTIFICATIONS ==
 AI/GenAI: Databricks Generative AI Fundamentals, Databricks AI Agent Fundamentals, Databricks Fundamentals, Claude 101 by Anthropic
