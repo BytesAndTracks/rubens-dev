@@ -736,6 +736,7 @@ function setLang(lang) {
   applyLang(lang);
   renderExperience(lang);
   renderProjects(lang);
+  updateChatLang(lang);
   typedPhrases = T[lang].typed;
   phraseIdx = 0; charIdx = 0; deleting = false;
   clearTimeout(typedTimeout);
@@ -787,6 +788,29 @@ type();
 let chatOpen = false;
 let chatHistory = [];
 let chatBusy = false;
+
+const chatI18n = {
+  en: {
+    hname: 'Ask about Rubens',
+    placeholder: 'Ask anything about Rubens...',
+    greeting: "Hi! 👋 I'm Rubens's AI assistant. Ask me anything about his experience, skills or projects!",
+    suggs: ['What do you currently work on?', 'Tell me about your AI projects', 'Open to remote work?', "What's your tech stack?", 'What are your hobbies?']
+  },
+  pt: {
+    hname: 'Pergunte sobre o Rubens',
+    placeholder: 'Pergunte qualquer coisa sobre o Rubens...',
+    greeting: 'Olá! 👋 Sou o assistente de IA do Rubens. Me pergunte qualquer coisa sobre sua experiência, habilidades ou projetos!',
+    suggs: ['No que você trabalha atualmente?', 'Fale sobre seus projetos de IA', 'Aberto a trabalho remoto?', 'Qual é o seu tech stack?', 'Quais são seus hobbies?']
+  }
+};
+
+function updateChatLang(lang) {
+  const c = chatI18n[lang];
+  const hname = document.querySelector('.chat-hname');
+  const input = document.getElementById('chatInput');
+  if (hname) hname.textContent = c.hname;
+  if (input) input.placeholder = c.placeholder;
+}
 
 function toggleChat() {
   chatOpen = !chatOpen;
@@ -842,7 +866,7 @@ async function sendMsg(override) {
     const res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: chatHistory })
+      body: JSON.stringify({ messages: chatHistory, lang: currentLang })
     });
     const data = await res.json();
     removeTyping();
