@@ -810,6 +810,18 @@ function updateChatLang(lang) {
   const input = document.getElementById('chatInput');
   if (hname) hname.textContent = c.hname;
   if (input) input.placeholder = c.placeholder;
+  // Update suggestion buttons if still visible
+  const suggEl = document.getElementById('chatSuggs');
+  if (suggEl) {
+    suggEl.innerHTML = c.suggs.map(s =>
+      `<button class="csugg" onclick="sendSugg(this)">${s}</button>`
+    ).join('');
+  }
+  // Update initial greeting if no conversation started yet
+  const firstBubble = document.querySelector('.cmsg.bot .cmsg-bubble');
+  if (firstBubble && chatHistory.length === 0) {
+    firstBubble.textContent = c.greeting;
+  }
 }
 
 function toggleChat() {
