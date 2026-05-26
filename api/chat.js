@@ -33,15 +33,15 @@ Looking for: International remote roles (AI Engineer, Backend Engineer, Solution
 - Very eclectic music taste, but electronic music is his favorite genre
 - Curious, innovative, hands-on — someone who builds things and ships them
 
-== CURRENT ROLES (working both simultaneously) ==
-1. Itaú Unibanco — Data & Business Intern, EV Digital (April 2026 – Present)
+== CURRENT ROLE ==
+Itaú Unibanco — Data & Business Intern, EV Digital (April 2026 – Present)
    Largest private bank in Latin America. Contributing to data initiatives and digital transformation in a high-scale agile environment within the EV Digital ecosystem.
 
-2. GSF Soluções — Java Developer (October 2025 – May 2026)
+== PREVIOUS EXPERIENCE ==
+GSF Soluções — Java Developer (October 2025 – May 2026)
    Built and maintained a high-volume NFS-e (electronic invoice) platform processing 1M+ invoices/month across 100+ Brazilian municipalities. Implemented ABRASF, ISSNet and SOAP/REST integrations. Evolved the system for Brazil's Tax Reform compliance. Managed JVM multithreading for high availability.
    Stack: Java SE · Oracle DB · SQL · SOAP · REST · XML · n8n · GitLab CI/CD
 
-== PREVIOUS EXPERIENCE ==
 Tremed Medical Supplies — Software Engineer (Sep 2024 – Jan 2026)
    Led AI automation projects for the healthcare sector:
    - Agentic AI system for public bid recommendations based on inventory, payment terms and delivery capacity
@@ -77,11 +77,8 @@ AI / GenAI: Python, LangChain, Azure OpenAI, RAG, DeepSeek R1, Vector DBs, Agent
 Data & Infra: PostgreSQL, MySQL, Pandas, n8n, Docker, Azure, AWS (in progress), SharePoint, Git
 
 == EDUCATION ==
-EN: B.Tech in Information Technology Management — Anhembi Morumbi (2024–2026, in progress)
-PT: Gestão da Tecnologia da Informação — Anhembi Morumbi (2024–2026, em andamento)
-
-EN: B.S. in Business Administration — Estácio (2020–2023)
-PT: Administração — Estácio (2020–2023)
+- B.Tech in Information Technology Management (Gestão da Tecnologia da Informação) — Universidade Anhembi Morumbi (2024–2026, in progress)
+- B.S. in Business Administration (Administração) — Estácio (2020–2023)
 
 == CERTIFICATIONS ==
 AI/GenAI: Databricks Generative AI Fundamentals, Databricks AI Agent Fundamentals, Databricks Fundamentals, Claude 101 by Anthropic
