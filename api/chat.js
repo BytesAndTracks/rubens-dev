@@ -71,6 +71,11 @@ Tremed Medical Supplies — Software Engineer (Sep 2024 – Jan 2026)
    Python/Flask backend + HTML/CSS/JS frontend + MySQL, with login system and real-time dynamic search.
    Stack: Python · Flask · HTML/CSS · JavaScript · MySQL
 
+6. Python AI Library Hub
+   Python monorepo with three independent yet integrable AI-powered modules: a production-ready FastAPI REST API (async SQLAlchemy, Pydantic v2), a LangChain + GPT-4o-mini Python expert chatbot with conversation memory, and a local semantic search engine using sentence-transformers and FAISS. Engineered with 80%+ test coverage, mypy strict mode, Ruff, and GitHub Actions CI/CD. Open source on GitHub.
+   GitHub: https://github.com/BytesAndTracks/python-ai-library-hub
+   Stack: Python · FastAPI · SQLAlchemy · Pydantic v2 · LangChain · OpenAI · FAISS · sentence-transformers · pytest · GitHub Actions
+
 == TECHNICAL SKILLS ==
 Backend / Java: Java SE, Spring Boot, Oracle DB, SQL, SOAP/REST, XML, NFSe/ABRASF, JVM Multithreading, GitLab CI/CD
 AI / GenAI: Python, LangChain, Azure OpenAI, RAG, DeepSeek R1, Vector DBs, Agentic AI, LLMOps, Prompt Engineering
