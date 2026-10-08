@@ -3,7 +3,18 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Rubens Santos — Java Backend & AI Engineer</title>
+  <title>Rubens Santos — AI Engineer</title>
+  <meta name="description" content="Rubens Santos — AI Engineer building LLM agents, RAG pipelines and AI automations on AWS and Azure, with a Java backend foundation. São Paulo, Brazil." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rubens-dev.vercel.app/" />
+  <meta property="og:title" content="Rubens Santos — AI Engineer" />
+  <meta property="og:description" content="Agentic AI, RAG and LLMs on AWS &amp; Azure, with a Java backend foundation. AWS Certified AI Practitioner." />
+  <meta property="og:image" content="https://rubens-dev.vercel.app/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#08080f" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2308080f'/%3E%3Ctext x='32' y='44' font-family='monospace' font-size='36' font-weight='700' fill='%2300ff88' text-anchor='middle'%3ER%3C/text%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet" />
@@ -12,7 +23,7 @@
     :root {
       --bg: #08080f; --surface: #0f0f1a; --border: #1c1c2e;
       --green: #00ff88; --cyan: #00d4ff; --purple: #8b5cf6; --orange: #ff9966;
-      --text: #dde1f0; --muted: #525870;
+      --text: #dde1f0; --muted: #7a819c;
       --glow-g: 0 0 20px rgba(0,255,136,.35), 0 0 60px rgba(0,255,136,.1);
       --glow-c: 0 0 20px rgba(0,212,255,.35), 0 0 60px rgba(0,212,255,.1);
     }
@@ -46,6 +57,11 @@
     }
     .lang-btn.active { background: var(--green); color: #000; font-weight: 700; }
     .lang-btn:not(.active):hover { color: var(--green); }
+    .nav-burger { display: none; background: none; border: 1px solid var(--border); width: 38px; height: 34px; cursor: pointer; flex-direction: column; justify-content: center; align-items: center; gap: 4px; }
+    .nav-burger span { display: block; width: 18px; height: 2px; background: var(--text); transition: transform .2s, opacity .2s; }
+    .nav-burger[aria-expanded="true"] span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+    .nav-burger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+    .nav-burger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
 
     /* HERO */
     #hero { min-height: 100vh; display: flex; align-items: center; padding: 0 4rem; position: relative; overflow: hidden; }
@@ -109,7 +125,7 @@
     .stat-card { padding: 1.1rem 1.4rem; border: 1px solid var(--border); background: rgba(0,255,136,.03); position: relative; }
     .stat-card::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--green); }
     .stat-num { font-size: 1.9rem; font-weight: 800; color: var(--green); line-height: 1; }
-    .stat-lbl { font-family: 'JetBrains Mono', monospace; font-size: .7rem; color: var(--muted); margin-top: .3rem; letter-spacing: .06em; }
+    .stat-lbl { font-family: 'JetBrains Mono', monospace; font-size: .74rem; color: var(--muted); margin-top: .3rem; letter-spacing: .06em; }
     .terminal { background: #0a0a12; border: 1px solid var(--border); overflow: hidden; box-shadow: 0 25px 60px rgba(0,0,0,.5); }
     .terminal-bar { background: #141420; padding: .7rem 1rem; display: flex; align-items: center; gap: .5rem; border-bottom: 1px solid var(--border); }
     .dot { width: 10px; height: 10px; border-radius: 50%; }
@@ -118,6 +134,11 @@
     .terminal-body { padding: 1.5rem; font-family: 'JetBrains Mono', monospace; font-size: .8rem; line-height: 1.9; }
     .t-k{color:var(--cyan)} .t-s{color:var(--green)} .t-n{color:var(--orange)}
     .t-c{color:#3d4570} .t-b{color:#8892b0} .t-i{padding-left:1.5rem} .t-i2{padding-left:3rem}
+
+    /* HERO SOCIAL */
+    .hero-social { display: flex; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; }
+    .hero-social a { display: inline-flex; align-items: center; gap: .5rem; font-family: 'JetBrains Mono', monospace; font-size: .78rem; color: var(--muted); text-decoration: none; letter-spacing: .05em; transition: color .2s; }
+    .hero-social a:hover { color: var(--green); }
 
     /* EXPERIENCE */
     #experience { background: var(--bg); }
@@ -134,20 +155,37 @@
     .exp-card.current { border-color: rgba(0,255,136,.2); }
     .exp-top { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: .5rem; margin-bottom: .75rem; }
     .exp-company { font-size: 1.15rem; font-weight: 700; letter-spacing: -.02em; }
-    .exp-period { font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--muted); letter-spacing: .08em; }
+    .exp-period { font-family: 'JetBrains Mono', monospace; font-size: .76rem; color: var(--muted); letter-spacing: .08em; }
     .exp-role { font-family: 'JetBrains Mono', monospace; font-size: .8rem; color: var(--cyan); margin-bottom: 1rem; }
     .current-badge {
       font-family: 'JetBrains Mono', monospace; font-size: .65rem; padding: .2rem .6rem;
       background: rgba(0,255,136,.1); border: 1px solid rgba(0,255,136,.3); color: var(--green);
       letter-spacing: .1em; align-self: flex-start;
     }
-    .exp-desc { font-size: .9rem; color: #8892b0; line-height: 1.75; margin-bottom: 1.2rem; }
+    .exp-bullets { list-style: none; display: flex; flex-direction: column; gap: .5rem; margin-bottom: 1.3rem; max-width: 900px; }
+    .exp-bullets li { position: relative; padding-left: 1.3rem; font-size: .9rem; color: #8b93ad; line-height: 1.65; }
+    .exp-bullets li::before { content: '▹'; position: absolute; left: 0; color: var(--green); }
+    .exp-bullets strong { color: var(--text); font-weight: 600; }
     .exp-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
     .exp-tag { font-family: 'JetBrains Mono', monospace; font-size: .68rem; padding: .2rem .6rem; background: rgba(0,212,255,.07); border: 1px solid rgba(0,212,255,.2); color: #7ab8c8; }
 
     /* PROJECTS */
     #projects { background: var(--surface); }
-    #proj-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 1.5rem; }
+    .proj-featured { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr)); gap: 1.5rem; }
+    .proj-group-label { font-family: 'JetBrains Mono', monospace; font-size: .72rem; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; margin: 0 0 1.2rem; padding-bottom: .5rem; border-bottom: 1px solid var(--border); }
+    .proj-group-label.more { margin-top: 3.5rem; }
+    .proj-card { display: flex; flex-direction: column; }
+    .proj-card .proj-tags { margin-top: auto; }
+    .proj-flow { display: flex; flex-wrap: wrap; align-items: center; gap: .35rem; margin-bottom: 1.3rem; padding: .8rem; background: rgba(0,212,255,.03); border: 1px dashed rgba(0,212,255,.18); }
+    .flow-step { font-family: 'JetBrains Mono', monospace; font-size: .68rem; padding: .25rem .55rem; border: 1px solid rgba(0,212,255,.3); color: var(--cyan); background: var(--bg); white-space: nowrap; }
+    .flow-arrow { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--muted); }
+    .proj-more { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(440px, 100%), 1fr)); gap: 1rem; }
+    .pm-row { display: grid; grid-template-columns: auto 1fr; gap: 1rem; padding: 1.2rem 1.4rem; border: 1px solid var(--border); background: var(--bg); transition: border-color .25s, transform .25s; }
+    .pm-row:hover { border-color: rgba(139,92,246,.4); transform: translateY(-3px); }
+    .pm-num { font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--muted); padding-top: .2rem; }
+    .pm-title { font-size: .98rem; font-weight: 700; letter-spacing: -.01em; margin-bottom: .3rem; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .pm-desc { font-size: .84rem; color: #8b93ad; line-height: 1.6; margin-bottom: .7rem; }
+    .pm-row .proj-link { margin-top: 0; }
     .proj-card {
       border: 1px solid var(--border); background: var(--bg); padding: 2rem;
       position: relative; overflow: hidden; transition: border-color .3s, transform .3s;
@@ -156,11 +194,14 @@
     .proj-card::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 1px; background: linear-gradient(90deg, transparent, var(--green), transparent); transition: left .5s; }
     .proj-card:hover { border-color: rgba(0,255,136,.3); transform: translateY(-5px); }
     .proj-card:hover::before { left: 100%; }
-    .proj-num { font-family: 'JetBrains Mono', monospace; font-size: .68rem; color: var(--muted); letter-spacing: .1em; margin-bottom: .8rem; }
+    .proj-num { font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--muted); letter-spacing: .1em; margin-bottom: .8rem; }
     .proj-title { font-size: 1.15rem; font-weight: 700; margin-bottom: .75rem; letter-spacing: -.02em; }
     .proj-desc { font-size: .87rem; color: #7a8399; line-height: 1.75; margin-bottom: 1.3rem; }
     .proj-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
     .p-tag { font-family: 'JetBrains Mono', monospace; font-size: .68rem; padding: .2rem .6rem; background: rgba(139,92,246,.1); border: 1px solid rgba(139,92,246,.25); color: var(--purple); }
+
+    .proj-link { display: inline-block; margin-top: 1.1rem; font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--green); text-decoration: none; letter-spacing: .06em; }
+    .proj-link:hover { text-shadow: var(--glow-g); }
 
     /* SKILLS */
     #skills { background: var(--bg); }
@@ -188,9 +229,9 @@
     .edu-item:hover { border-color: rgba(0,212,255,.3); }
     .edu-degree { font-size: .95rem; font-weight: 700; margin-bottom: .25rem; }
     .edu-school { font-family: 'JetBrains Mono', monospace; font-size: .75rem; color: var(--cyan); margin-bottom: .2rem; }
-    .edu-period { font-family: 'JetBrains Mono', monospace; font-size: .68rem; color: var(--muted); }
+    .edu-period { font-family: 'JetBrains Mono', monospace; font-size: .74rem; color: var(--muted); }
     .edu-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; }
-    .cert-cat-label { font-family: 'JetBrains Mono', monospace; font-size: .68rem; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; margin: 1.25rem 0 .6rem; padding-bottom: .4rem; border-bottom: 1px solid var(--border); }
+    .cert-cat-label { font-family: 'JetBrains Mono', monospace; font-size: .72rem; letter-spacing: .18em; color: var(--muted); text-transform: uppercase; margin: 1.25rem 0 .6rem; padding-bottom: .4rem; border-bottom: 1px solid var(--border); }
     .cert-cat-label:first-child { margin-top: 0; }
     .cert-grid { display: flex; flex-direction: column; gap: .5rem; }
     .cert-item {
@@ -206,8 +247,21 @@
     .cert-left { display: flex; align-items: center; gap: .9rem; }
     .cert-icon { font-size: 1.1rem; flex-shrink: 0; }
     .cert-name { font-size: .85rem; font-weight: 600; }
-    .cert-issuer { font-family: 'JetBrains Mono', monospace; font-size: .65rem; color: var(--muted); margin-top: .12rem; }
-    .cert-verify { font-family: 'JetBrains Mono', monospace; font-size: .65rem; opacity: 0; transition: opacity .25s; white-space: nowrap; flex-shrink: 0; }
+    .cert-issuer { font-family: 'JetBrains Mono', monospace; font-size: .72rem; color: var(--muted); margin-top: .12rem; }
+    .cert-verify { font-family: 'JetBrains Mono', monospace; font-size: .72rem; opacity: 0; transition: opacity .25s; white-space: nowrap; flex-shrink: 0; }
+
+    .cert-featured { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(190px, 100%), 1fr)); gap: 1rem; margin-bottom: 1.5rem; }
+    .cert-feat { display: flex; flex-direction: column; gap: .5rem; padding: 1.3rem; border: 1px solid rgba(139,92,246,.35); background: linear-gradient(160deg, rgba(139,92,246,.1), var(--bg) 70%); text-decoration: none; color: inherit; transition: border-color .25s, transform .25s; }
+    a.cert-feat:hover { border-color: var(--purple); transform: translateY(-3px); }
+    .cert-feat .cert-icon { font-size: 1.6rem; }
+    .cert-feat .cert-name { font-size: .95rem; font-weight: 700; line-height: 1.3; }
+    .cert-feat .cert-verify { opacity: 1; color: var(--purple); margin-top: auto; padding-top: .4rem; }
+    .cert-more summary { list-style: none; cursor: pointer; font-family: 'JetBrains Mono', monospace; font-size: .78rem; color: var(--green); letter-spacing: .06em; padding: .8rem 1.1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; gap: .6rem; transition: border-color .2s; }
+    .cert-more summary::-webkit-details-marker { display: none; }
+    .cert-more summary::before { content: '▸'; transition: transform .2s; }
+    .cert-more[open] summary::before { transform: rotate(90deg); }
+    .cert-more summary:hover { border-color: rgba(0,255,136,.4); }
+    .cert-more .cert-grid { margin-top: 1.25rem; }
 
     /* CONTACT */
     #contact { background: var(--bg); text-align: center; }
@@ -232,7 +286,13 @@
 
     @media (max-width: 900px) {
       nav { padding: 1rem 1.5rem; }
-      .nav-links { display: none; }
+      .nav-right { gap: 1rem; }
+      .nav-burger { display: flex; }
+      .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,.6); }
+      .nav-links.open { display: flex; }
+      .nav-links a { display: block; padding: 1rem 1.5rem; border-top: 1px solid var(--border); font-size: .85rem; }
+      .exp-card { padding: 1.5rem 1.25rem 1.5rem 1.6rem; }
+      .exp-card:hover { transform: none; }
       section { padding: 5rem 1.5rem; }
       #hero { padding: 6rem 1.5rem 3rem; }
       .about-grid, .edu-grid { grid-template-columns: 1fr; gap: 3rem; }
@@ -331,6 +391,7 @@
       <button class="lang-btn active" onclick="setLang('en')">EN</button>
       <button class="lang-btn" onclick="setLang('pt')">PT</button>
     </div>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false" onclick="toggleNav()"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -343,10 +404,15 @@
     <div class="hero-badge"><span class="badge-dot"></span><span data-i18n="hero_badge">Open to international opportunities</span></div>
     <h1 class="hero-name">Rubens<br><span class="outline">Santos.</span></h1>
     <div class="hero-typed-wrap">&gt;&nbsp;<span id="typed-text"></span><span class="cursor"></span></div>
-    <p class="hero-desc" data-i18n="hero_desc">Software Engineer with dual expertise in Java backend systems and Generative AI. I build scalable APIs, fiscal integrations, and AI-powered automations that drive real business impact.</p>
+    <p class="hero-desc" data-i18n="hero_desc">AI Engineer with a solid Java backend foundation. I build LLM agents, RAG pipelines and AI automations on AWS and Azure — and keep high-volume fiscal systems running in production.</p>
     <div class="hero-btns">
-      <a href="#projects" class="btn-p" data-i18n="hero_cta1">View Projects</a>
-      <a href="#contact" class="btn-o" data-i18n="hero_cta2">Contact Me</a>
+      <a href="Rubens_Oliveira_Santos_CV_AI_Engineer.pdf" download class="btn-p" data-i18n="hero_cv">Download CV</a>
+      <a href="#projects" class="btn-o" data-i18n="hero_cta1">View Projects</a>
+    </div>
+    <div class="hero-social">
+      <a href="https://www.linkedin.com/in/rubensosantos" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg> LinkedIn</a>
+      <a href="https://github.com/BytesAndTracks" target="_blank" rel="noopener"><svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg> GitHub</a>
+      <a href="mailto:rubens8965@gmail.com"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 6 10 7 10-7"/></svg> rubens8965@gmail.com</a>
     </div>
   </div>
 </section>
@@ -359,15 +425,15 @@
     <div class="s-line"></div>
   </div>
   <div class="about-grid">
-    <div class="reveal">
-      <p data-i18n-html="about_p1">I'm <strong>Rubens Santos</strong>, a Software Engineer currently working simultaneously as a <strong>Java Developer</strong> at GSF Soluções and as a <strong>Data Analyst</strong> at Itaú Unibanco in the Data & Business (EV Digital) area.</p>
-      <p data-i18n-html="about_p2">My work spans two worlds: building robust <strong>Java backend systems</strong> for high-volume fiscal platforms (1M+ NFS-e/month across 100+ municipalities), and implementing <strong>GenAI solutions</strong> — from RAG chatbots to autonomous agents that automate critical business workflows.</p>
-      <p data-i18n-html="about_p3">Based in São Paulo 🇧🇷, pursuing a degree in Information Technology. Pursuing certifications in AWS, Azure and Oracle Cloud. Always looking to build things that matter.</p>
+    <div class="about-text reveal">
+      <p data-i18n-html="about_p1">I'm <strong>Rubens Santos</strong>, an AI Engineer currently working in <strong>Data &amp; AI</strong> at Itaú Unibanco (EV Digital) and as a <strong>Backend Engineer (Java)</strong> at GSF Soluções.</p>
+      <p data-i18n-html="about_p2">My work spans two worlds: implementing <strong>GenAI solutions</strong> — autonomous agents on Amazon Bedrock, RAG chatbots and LLM-powered automations — and building robust <strong>Java backend systems</strong> for high-volume fiscal platforms (1M+ NFS-e/month across 100+ municipalities).</p>
+      <p data-i18n-html="about_p3">Based in São Paulo 🇧🇷. <strong>AWS Certified AI Practitioner</strong>, pursuing a degree in IT Management. Always building things that matter.</p>
       <div class="about-stats">
-        <div class="stat-card"><div class="stat-num">1M+</div><div class="stat-lbl" data-i18n="stat1">NFS-e invoices/month</div></div>
+        <div class="stat-card"><div class="stat-num">1M+</div><div class="stat-lbl" data-i18n="stat1">NFS-e invoices / month</div></div>
         <div class="stat-card"><div class="stat-num">100+</div><div class="stat-lbl" data-i18n="stat2">Municipalities integrated</div></div>
         <div class="stat-card"><div class="stat-num">50k+</div><div class="stat-lbl" data-i18n="stat3">Products automated with AI</div></div>
-        <div class="stat-card"><div class="stat-num">2</div><div class="stat-lbl" data-i18n="stat4">Companies simultaneously</div></div>
+        <div class="stat-card"><div class="stat-num">2+</div><div class="stat-lbl" data-i18n="stat4">Years shipping applied AI</div></div>
       </div>
     </div>
     <div class="terminal reveal">
@@ -378,7 +444,7 @@
       <div class="terminal-body">
         <span class="t-b">{</span><br>
         <span class="t-i"><span class="t-k">"name"</span>: <span class="t-s">"Rubens Santos"</span>,</span><br>
-        <span class="t-i"><span class="t-k">"role"</span>: <span class="t-s">"Java Backend &amp; AI Engineer"</span>,</span><br>
+        <span class="t-i"><span class="t-k">"role"</span>: <span class="t-s">"AI Engineer"</span>,</span><br>
         <span class="t-i"><span class="t-k">"location"</span>: <span class="t-s">"São Paulo, BR 🇧🇷"</span>,</span><br>
         <span class="t-i"><span class="t-k">"current"</span>: {</span><br>
         <span class="t-i2"><span class="t-k">"1"</span>: <span class="t-s">"Itaú Unibanco"</span>,</span><br>
@@ -386,10 +452,11 @@
         <span class="t-i">},</span><br>
         <span class="t-i"><span class="t-k">"nfse_volume"</span>: <span class="t-s">"1M+ / month"</span>,</span><br>
         <span class="t-i"><span class="t-k">"ai_focus"</span>: [</span><br>
-        <span class="t-i2"><span class="t-s">"RAG Pipelines"</span>,</span><br>
         <span class="t-i2"><span class="t-s">"Agentic AI"</span>,</span><br>
-        <span class="t-i2"><span class="t-s">"LLM Integration"</span></span><br>
+        <span class="t-i2"><span class="t-s">"RAG Pipelines"</span>,</span><br>
+        <span class="t-i2"><span class="t-s">"Amazon Bedrock"</span></span><br>
         <span class="t-i">],</span><br>
+        <span class="t-i"><span class="t-k">"certified"</span>: <span class="t-s">"AWS AI Practitioner"</span>,</span><br>
         <span class="t-i"><span class="t-k">"open_to"</span>: <span class="t-s">"international_roles"</span>,</span><br>
         <span class="t-i t-c">// AI Eng · Backend · Solutions Arch</span><br>
         <span class="t-i"><span class="t-k">"coffee"</span>: <span class="t-n">true</span></span><br>
@@ -431,10 +498,16 @@
       <div class="skill-icon">☕</div>
       <div class="skill-cat-title" data-i18n="skills_cat1">Backend / Java</div>
       <div class="skill-tags">
-        <span class="s-tag">Java SE</span><span class="s-tag">Spring Boot</span>
-        <span class="s-tag">Oracle DB</span><span class="s-tag">SQL</span>
-        <span class="s-tag">SOAP / REST</span><span class="s-tag">XML</span>
-        <span class="s-tag">NFSe / ABRASF</span><span class="s-tag">Multithreading</span>
+        <span class="s-tag">Java 8 / 11 / 17</span>
+        <span class="s-tag">Spring Boot</span>
+        <span class="s-tag">Spring Batch</span>
+        <span class="s-tag">Oracle Database</span>
+        <span class="s-tag">SQL · PL/SQL</span>
+        <span class="s-tag">SOAP / REST</span>
+        <span class="s-tag">XML</span>
+        <span class="s-tag">NFS-e / ABRASF</span>
+        <span class="s-tag">Multithreading</span>
+        <span class="s-tag">FastAPI</span>
         <span class="s-tag">GitLab CI/CD</span>
       </div>
     </div>
@@ -442,22 +515,38 @@
       <div class="skill-icon">🤖</div>
       <div class="skill-cat-title" data-i18n="skills_cat2">AI / GenAI Engineering</div>
       <div class="skill-tags">
-        <span class="s-tag">Python</span><span class="s-tag">LangChain</span>
-        <span class="s-tag">Azure OpenAI</span><span class="s-tag">RAG</span>
-        <span class="s-tag">DeepSeek R1</span><span class="s-tag">Vector DBs</span>
-        <span class="s-tag">Agentic AI</span><span class="s-tag">LLMOps</span>
+        <span class="s-tag">Python</span>
+        <span class="s-tag">LLMs</span>
+        <span class="s-tag">RAG</span>
+        <span class="s-tag">Agentic AI</span>
+        <span class="s-tag">Amazon Bedrock</span>
+        <span class="s-tag">Azure OpenAI</span>
+        <span class="s-tag">OpenAI API</span>
+        <span class="s-tag">LangChain</span>
+        <span class="s-tag">Embeddings</span>
+        <span class="s-tag">Semantic Search</span>
+        <span class="s-tag">FAISS · ChromaDB</span>
+        <span class="s-tag">Ollama</span>
         <span class="s-tag">Prompt Engineering</span>
+        <span class="s-tag">Microsoft 365 Copilot</span>
       </div>
     </div>
     <div class="skill-cat reveal">
       <div class="skill-icon">⚙️</div>
-      <div class="skill-cat-title" data-i18n="skills_cat3">Data & Infrastructure</div>
+      <div class="skill-cat-title" data-i18n="skills_cat3">Data &amp; Cloud</div>
       <div class="skill-tags">
-        <span class="s-tag">PostgreSQL</span><span class="s-tag">MySQL</span>
-        <span class="s-tag">Pandas</span><span class="s-tag">n8n</span>
-        <span class="s-tag">Docker</span><span class="s-tag">AWS (learning)</span>
-        <span class="s-tag">Azure</span><span class="s-tag">SharePoint</span>
+        <span class="s-tag">AWS Lambda</span>
+        <span class="s-tag">Amazon EventBridge</span>
+        <span class="s-tag">Amazon Athena</span>
+        <span class="s-tag">Databricks</span>
+        <span class="s-tag">Azure</span>
+        <span class="s-tag">PostgreSQL</span>
+        <span class="s-tag">MySQL</span>
+        <span class="s-tag">Pandas · ETL</span>
+        <span class="s-tag">n8n</span>
+        <span class="s-tag">Docker</span>
         <span class="s-tag">Git</span>
+        <span class="s-tag">TypeScript · React</span>
       </div>
     </div>
   </div>
@@ -466,7 +555,7 @@
 <!-- EDUCATION -->
 <section id="education">
   <div class="section-header reveal">
-    <div class="s-label" data-i18n="edu_label">05 // education & certs</div>
+    <div class="s-label" data-i18n="edu_label">05 // education &amp; certs</div>
     <h2 class="s-title" data-i18n="edu_title">Background</h2>
     <div class="s-line"></div>
   </div>
@@ -474,7 +563,7 @@
     <div class="edu-block reveal">
       <h3 data-i18n="edu_heading">Education</h3>
       <div class="edu-item">
-        <div class="edu-degree" data-i18n="edu1_deg">B.Tech in Information Technology</div>
+        <div class="edu-degree" data-i18n="edu1_deg">B.Tech in IT Management</div>
         <div class="edu-school">Universidade Anhembi Morumbi</div>
         <div class="edu-period" data-i18n="edu1_period">2024 — 2026 · in progress</div>
       </div>
@@ -486,96 +575,7 @@
     </div>
     <div class="edu-block reveal">
       <h3 data-i18n="cert_heading">Certifications</h3>
-      <div class="cert-grid">
-
-        <div class="cert-cat-label">🤖 AI / GenAI</div>
-
-        <a href="https://credentials.databricks.com/b423d7dd-7770-4e1f-88f8-61849b645518" target="_blank" class="cert-item">
-          <div class="cert-left">
-            <div class="cert-icon">⚡</div>
-            <div><div class="cert-name">Generative AI Fundamentals</div><div class="cert-issuer">Databricks · set 2025</div></div>
-          </div>
-          <div class="cert-verify">↗ verify</div>
-        </a>
-
-        <a href="https://credentials.databricks.com/612977cc-fe94-460b-9420-22b20bb0407f" target="_blank" class="cert-item">
-          <div class="cert-left">
-            <div class="cert-icon">🤖</div>
-            <div><div class="cert-name">AI Agent Fundamentals</div><div class="cert-issuer">Databricks · set 2025</div></div>
-          </div>
-          <div class="cert-verify">↗ verify</div>
-        </a>
-
-        <a href="https://credentials.databricks.com/cd56346b-4de8-4934-b709-e4c2de7b6b59" target="_blank" class="cert-item">
-          <div class="cert-left">
-            <div class="cert-icon">🧱</div>
-            <div><div class="cert-name">Databricks Fundamentals</div><div class="cert-issuer">Databricks · set 2025</div></div>
-          </div>
-          <div class="cert-verify">↗ verify</div>
-        </a>
-
-        <a href="https://verify.skilljar.com/c/3q4rp72w56q6" target="_blank" class="cert-item">
-          <div class="cert-left">
-            <div class="cert-icon">🧠</div>
-            <div><div class="cert-name">Claude 101</div><div class="cert-issuer">Anthropic · mai 2026</div></div>
-          </div>
-          <div class="cert-verify">↗ verify</div>
-        </a>
-
-        <div class="cert-cat-label">☁️ Cloud / AWS</div>
-
-        <a href="https://www.coursera.org/account/accomplishments/records/TQE2Q7A6GP8G" target="_blank" class="cert-item">
-          <div class="cert-left">
-            <div class="cert-icon">☁️</div>
-            <div><div class="cert-name">AWS Cloud Technical Essentials</div><div class="cert-issuer">Amazon Web Services · mai 2024</div></div>
-          </div>
-          <div class="cert-verify">↗ verify</div>
-        </a>
-
-        <a href="https://www.credly.com/badges/a4e0f5ee-e2ac-4ade-9efc-362bd4bec749/linked_in_profile" target="_blank" class="cert-item">
-          <div class="cert-left">
-            <div class="cert-icon">🗄️</div>
-            <div><div class="cert-name">AWS Educate: Getting Started with Storage</div><div class="cert-issuer">Amazon Web Services · jul 2025</div></div>
-          </div>
-          <div class="cert-verify">↗ verify</div>
-        </a>
-
-        <div class="cert-cat-label">☕ Java</div>
-
-        <a href="https://www.linkedin.com/learning/certificates/9f848c6d9ef4e5a642d1ecd10bead849fd6cd83aef273cd289c6802481abd53b" target="_blank" class="cert-item">
-          <div class="cert-left">
-            <div class="cert-icon">🧩</div>
-            <div><div class="cert-name">Java Object-Oriented Programming</div><div class="cert-issuer">LinkedIn Learning · dez 2025</div></div>
-          </div>
-          <div class="cert-verify">↗ verify</div>
-        </a>
-
-        <a href="https://www.linkedin.com/learning/certificates/aea8082f1895132955d816b3b1e9d5b7ac8948f51f9bed7551f3b31b3e38a6e7" target="_blank" class="cert-item">
-          <div class="cert-left">
-            <div class="cert-icon">🔧</div>
-            <div><div class="cert-name">Java Refactoring Best Practices</div><div class="cert-issuer">LinkedIn Learning · dez 2025</div></div>
-          </div>
-          <div class="cert-verify">↗ verify</div>
-        </a>
-
-        <div class="cert-cat-label">📊 Data</div>
-
-        <a href="https://www.coursera.org/account/accomplishments/specialization/TZTHFAUVALZY" target="_blank" class="cert-item">
-          <div class="cert-left">
-            <div class="cert-icon">📊</div>
-            <div><div class="cert-name">Google Data Analytics</div><div class="cert-issuer">Google · out 2024</div></div>
-          </div>
-          <div class="cert-verify">↗ verify</div>
-        </a>
-
-        <div class="cert-item" style="cursor:default;">
-          <div class="cert-left">
-            <div class="cert-icon">🏛️</div>
-            <div><div class="cert-name">Oracle Database Explorer</div><div class="cert-issuer">Oracle · jul 2024</div></div>
-          </div>
-        </div>
-
-      </div>
+      <div id="cert-wrap"></div>
     </div>
   </div>
 </section>
@@ -605,7 +605,7 @@
 
 <footer>
   <p data-i18n-html="footer_l">Built by <span>Rubens Santos</span></p>
-  <p><span>rubens.dev</span> &mdash; © 2025</p>
+  <p><span>rubens.dev</span> &mdash; © 2026</p>
 </footer>
 
 <script>
@@ -613,81 +613,146 @@ const T = {
   en: {
     nav_about:'about', nav_exp:'experience', nav_proj:'projects', nav_skills:'skills', nav_contact:'contact',
     hero_badge:'Open to international opportunities',
-    typed:['Java Backend Engineer','AI / LLM Engineer','GenAI Automation Builder','Microservices Developer','Fiscal Systems Specialist'],
-    hero_desc:'Software Engineer with dual expertise in Java backend systems and Generative AI. I build scalable APIs, fiscal integrations, and AI-powered automations that drive real business impact.',
-    hero_cta1:'View Projects', hero_cta2:'Contact Me',
+    typed:['AI Engineer','Java Backend Engineer','Agentic AI & RAG Builder','AWS Certified AI Practitioner','Fiscal Systems Specialist'],
+    hero_desc:'AI Engineer with a solid Java backend foundation. I build LLM agents, RAG pipelines and AI automations on AWS and Azure — and keep high-volume fiscal systems running in production.',
+    hero_cv:'Download CV', hero_cta1:'View Projects',
     about_label:'01 // about me', about_title:'Who I am',
-    about_p1:'I\'m <strong>Rubens Santos</strong>, a Software Engineer currently working simultaneously as a <strong>Java Developer</strong> at GSF Soluções and as a <strong>Data Analyst</strong> at Itaú Unibanco in the Data & Business (EV Digital) area.',
-    about_p2:'My work spans two worlds: building robust <strong>Java backend systems</strong> for high-volume fiscal platforms (1M+ NFS-e/month across 100+ municipalities), and implementing <strong>GenAI solutions</strong> — from RAG chatbots to autonomous agents that automate critical business workflows.',
-    about_p3:'Based in São Paulo 🇧🇷, pursuing a degree in IT. Working towards AWS, Azure and Oracle Cloud certifications. Always building things that matter.',
-    stat1:'NFS-e invoices / month', stat2:'Municipalities integrated', stat3:'Products automated with AI', stat4:'Companies simultaneously',
-    exp_label:'02 // experience', exp_title:"Where I've worked",
-    proj_label:'03 // projects', proj_title:"What I've built",
+    about_p1:'I\'m <strong>Rubens Santos</strong>, an AI Engineer currently working in <strong>Data &amp; AI</strong> at Itaú Unibanco (EV Digital) and as a <strong>Backend Engineer (Java)</strong> at GSF Soluções.',
+    about_p2:'My work spans two worlds: implementing <strong>GenAI solutions</strong> — autonomous agents on Amazon Bedrock, RAG chatbots and LLM-powered automations — and building robust <strong>Java backend systems</strong> for high-volume fiscal platforms (1M+ NFS-e/month across 100+ municipalities).',
+    about_p3:'Based in São Paulo 🇧🇷. <strong>AWS Certified AI Practitioner</strong>, pursuing a degree in IT Management. Always building things that matter.',
+    stat1:'NFS-e invoices / month', stat2:'Municipalities integrated', stat3:'Products automated with AI', stat4:'Years shipping applied AI',
+    exp_label:'02 // experience', exp_title:"Where I've worked", current_badge:'CURRENT',
+    proj_label:'03 // projects', proj_title:"What I've built", proj_featured:'Featured', proj_more:'More projects',
     skills_label:'04 // skills', skills_title:'Technical stack',
-    skills_cat1:'Backend / Java', skills_cat2:'AI / GenAI Engineering', skills_cat3:'Data & Infrastructure',
+    skills_cat1:'Backend / Java', skills_cat2:'AI / GenAI Engineering', skills_cat3:'Data & Cloud',
     edu_label:'05 // education & certs', edu_title:'Background', edu_heading:'Education', cert_heading:'Certifications',
-    edu1_deg:'B.Tech in Information Technology', edu1_period:'2024 — 2026 · in progress',
+    edu1_deg:'B.Tech in IT Management', edu1_period:'2024 — 2026 · in progress',
     edu2_deg:'B.S. in Business Administration',
+    cert_all:n=>`See all certifications (${n})`, cert_verify:'↗ verify',
+    cert_cats:{ai:'🤖 AI / GenAI', cloud:'☁️ Cloud / AWS', java:'☕ Java', data:'📊 Data'},
+    months:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
     contact_label:'06 // contact', contact_title:'Let\'s build<br>something together',
     contact_desc:'Open to international roles as AI Engineer, Backend Engineer (Java/Cloud), Solutions Architect, or Tech Lead. Send me a message — I reply fast.',
     footer_l:'Built by <span>Rubens Santos</span>',
     experiences: [
-      { current:true, company:'Itaú Unibanco', role:'Data Analyst — EV Digital', period:'Apr 2026 — Present', desc:'Working in the data and digital business area of the largest private bank in Latin America. Contributing to data initiatives and digital transformation within a high-scale agile environment of the EV Digital ecosystem.', tags:['Data & Analytics','Digital Transformation','Agile','Fintech'] },
-      { current:false, company:'GSF Soluções', role:'Java Developer', period:'Oct 2025 — May 2026', desc:'Development and maintenance of a high-volume NFS-e issuance platform, processing 1M+ approved invoices/month across 100+ Brazilian municipalities. Built ABRASF, ISSNet and SOAP/REST integrations, evolved the system for Brazil\'s Tax Reform compliance, and managed JVM multithreading for high availability.', tags:['Java SE','Oracle DB','SOAP/REST','XML','n8n','GitLab CI/CD'] },
-      { current:false, company:'Tremed — Medical Supplies', role:'Software Engineer', period:'Sep 2024 — Jan 2026', desc:'Led AI automation initiatives for the healthcare sector. Built an Agentic AI system for public bid recommendation, a RAG chatbot with PDF ingestion, automated NCM fiscal classification for 50,000+ products using Azure OpenAI with checkpoint resilience, and a SharePoint → DB ETL pipeline.', tags:['Python','Azure OpenAI','LangChain','PostgreSQL','n8n','Docker','React/TypeScript'] },
+      { current:true, company:'Itaú Unibanco', role:'Data & AI — EV Digital', period:'Apr 2026 — Present', bullets:[
+        'Built an autonomous <strong>dashboard-monitoring agent</strong> on AWS — Amazon Bedrock for LLM analysis, Lambda + EventBridge for scheduled runs, Athena to query the data.',
+        'Developed a pipeline of <strong>dynamic HTML reports</strong> from Athena queries with Python and BeautifulSoup.',
+        'Created <strong>Microsoft 365 Copilot agents</strong> for team productivity.',
+        'Data initiatives in a large-scale agile environment at <strong>Latin America\'s largest private bank</strong>.'
+      ], tags:['Python','Amazon Bedrock','AWS Lambda','Amazon EventBridge','Amazon Athena','SQL','Microsoft 365 Copilot'] },
+      { current:true, company:'GSF Soluções', role:'Backend Engineer (Java) · Consultant', period:'Oct 2025 — Present', bullets:[
+        'Maintain and evolve an NFS-e issuance platform processing <strong>1M+ approved invoices per month</strong>.',
+        'Integrations with <strong>100+ Brazilian municipalities</strong> via SOAP and REST (ABRASF, ISSNet and other providers), handling XML schema variations between city halls.',
+        'Implemented the IBS/CBS fields of Brazil\'s <strong>Tax Reform (LC 214/2025)</strong> and the national DPS standard across multiple municipalities.',
+        'Complex Oracle <strong>SQL and PL/SQL</strong> routines for processing and reprocessing high-volume transactional data.',
+        'JVM concurrency, multithreading and <strong>Spring Batch</strong> to keep availability under production load.'
+      ], tags:['Java','Oracle Database','SQL','PL/SQL','Spring Batch','SOAP','REST','XML','GitLab CI/CD','n8n'] },
+      { current:false, company:'Tremed — Medical Supplies', role:'Software Engineer · AI & Automation', period:'Sep 2024 — Jan 2026', bullets:[
+        'Designed and deployed an <strong>agentic AI system</strong> that analyzes public bids and recommends which to pursue, cross-checking inventory, payment terms and delivery capacity.',
+        'Built a <strong>RAG chatbot</strong> over corporate documentation with PDF ingestion and semantic search (LangChain, DeepSeek-R1).',
+        'Automated NCM fiscal classification of <strong>50,000+ products</strong> with Azure OpenAI and checkpointing — eliminating <strong>hundreds of hours</strong> of manual work.',
+        'SharePoint → MySQL ETL pipeline with validation and incremental loads; bid orchestration with n8n, XML → JSON and a React/TypeScript frontend.'
+      ], tags:['Python','Azure OpenAI','LangChain','DeepSeek-R1','Pandas','MySQL','PostgreSQL','n8n','Docker','React','TypeScript'] },
     ],
-    projects: [
-      { num:'001', title:'Agentic AI — Bid Analysis System', desc:'End-to-end solution orchestrated with N8N: API integration with token management, XML→JSON processing, and an AI Agent that recommends optimal bidding opportunities based on inventory, payment terms, and delivery capacity. Frontend built in React/TypeScript.', tags:['N8N','PostgreSQL','React/TypeScript','LLMOps','Agentic AI','JavaScript'] },
-      { num:'002', title:'RAG Conversational Chatbot', desc:'Conversational chatbot built with RAG architecture and DeepSeek-R1. Fed with corporate PDF documents to answer complex internal questions — demonstrating practical mastery of large language model retrieval and fine-tuning for domain-specific knowledge.', tags:['Python','LangChain','DeepSeek R1','RAG','Vector DB'] },
-      { num:'003', title:'AI Fiscal Classification (NCM)', desc:'Automated NCM fiscal classification for 50,000+ products using Python and Azure OpenAI. Autonomous spreadsheet processing with a checkpoint system ensuring integrity in long-running executions — eliminating hundreds of hours of manual work.', tags:['Python','Azure OpenAI','Pandas','Azure'] },
-      { num:'004', title:'ETL Pipeline — Data Processing', desc:'Automated ETL pipeline with Python (Pandas) and a scheduler to extract SharePoint data, perform cleaning, standardization (whitespace removal, abbreviation normalization) and formatting, then load it into a MySQL database automatically.', tags:['Python','Pandas','SharePoint','MySQL'] },
-      { num:'005', title:'Full-Stack Web App with Dynamic Search', desc:'Full-stack web application with Python/Flask backend and HTML/CSS/JS frontend, connected to MySQL. Features a registration/login system and dynamic SQL-powered search for real-time filtering.', tags:['Python','Flask','HTML/CSS','JavaScript','MySQL'] },
-      { num:'006', title:'Python AI Library Hub', desc:'Python monorepo with three independent yet integrable AI-powered modules: a production-ready FastAPI REST API with async SQLAlchemy and Pydantic v2, a LangChain + GPT-4o-mini Python expert chatbot with conversation memory, and a local semantic search engine using sentence-transformers and FAISS. Engineered with 80%+ test coverage, mypy strict mode, Ruff, and GitHub Actions CI/CD.', tags:['Python','FastAPI','LangChain','FAISS','sentence-transformers','SQLAlchemy','pytest','GitHub Actions'] },
+    featured: [
+      { num:'001', title:'Agentic AI — Bid Analysis System', desc:'End-to-end solution orchestrated with n8n: API integration with token management, XML→JSON processing, and an AI agent that recommends which public bids to pursue based on inventory, payment terms and delivery capacity.', flow:['Bid APIs','XML → JSON','AI agent','React UI'], tags:['n8n','PostgreSQL','React/TypeScript','Agentic AI'] },
+      { num:'002', title:'RAG Conversational Chatbot', desc:'Chatbot over corporate PDF documentation with chunking, embeddings and semantic search, letting people ask complex questions about internal docs in natural language.', flow:['PDFs','Chunks + embeddings','Vector store','DeepSeek-R1'], tags:['Python','LangChain','DeepSeek-R1','RAG'] },
+      { num:'003', title:'AI Fiscal Classification (NCM)', desc:'NCM fiscal classification for 50,000+ products with Azure OpenAI. Checkpointing resumes long runs without reprocessing — eliminating hundreds of hours of manual work.', flow:['Spreadsheet','Batches + checkpoint','Azure OpenAI','NCM code'], tags:['Python','Azure OpenAI','Pandas'] },
+    ],
+    more: [
+      { title:'Python AI Library Hub', desc:'FastAPI API, LangChain chatbot with memory and FAISS semantic search — 80%+ test coverage, mypy strict and CI/CD.', tags:['FastAPI','LangChain','FAISS','pytest'], link:'https://github.com/BytesAndTracks/python-ai-library-hub' },
+      { title:'RAG + ReAct Agent over PDFs', desc:'Fully local RAG with a ReAct agent that reasons over PDFs, served through FastAPI.', tags:['Ollama','ChromaDB','FastAPI'] },
+      { title:'Fraud Detection Lakehouse', desc:'Medallion architecture (bronze/silver/gold) on Databricks over PaySim, with a SQL dashboard and Genie.', tags:['Databricks','SQL','Genie'] },
+      { title:'ETL Pipeline — SharePoint → MySQL', desc:'Scheduled extraction with validation, standardization and incremental loads.', tags:['Python','Pandas','MySQL'] },
     ]
   },
   pt: {
     nav_about:'sobre', nav_exp:'experiência', nav_proj:'projetos', nav_skills:'habilidades', nav_contact:'contato',
     hero_badge:'Aberto a oportunidades internacionais',
-    typed:['Engenheiro Backend Java','AI / LLM Engineer','Construtor de Automações GenAI','Desenvolvedor de Microsserviços','Especialista em Sistemas Fiscais'],
-    hero_desc:'Engenheiro de Software com dupla expertise em sistemas Java backend e IA Generativa. Construo APIs escaláveis, integrações fiscais e automações com IA que geram impacto real.',
-    hero_cta1:'Ver Projetos', hero_cta2:'Entrar em Contato',
+    typed:['AI Engineer','Engenheiro Backend Java','Construtor de Agentes de IA & RAG','AWS Certified AI Practitioner','Especialista em Sistemas Fiscais'],
+    hero_desc:'AI Engineer com base sólida em backend Java. Construo agentes com LLM, pipelines RAG e automações com IA em AWS e Azure — e mantenho sistemas fiscais de alto volume rodando em produção.',
+    hero_cv:'Baixar currículo', hero_cta1:'Ver Projetos',
     about_label:'01 // sobre mim', about_title:'Quem sou eu',
-    about_p1:'Sou <strong>Rubens Santos</strong>, Engenheiro de Software atuando simultaneamente como <strong>Desenvolvedor Java</strong> na GSF Soluções e como <strong>Analista de Dados</strong> no Itaú Unibanco na área de Dados & Negócios (EV Digital).',
-    about_p2:'Meu trabalho atravessa dois mundos: construção de sistemas <strong>Java backend robustos</strong> para plataformas fiscais de alto volume (+1M NFSe/mês, 100+ municípios), e implementação de <strong>soluções GenAI</strong> — de chatbots RAG a agentes autônomos que automatizam fluxos críticos de negócio.',
-    about_p3:'Baseado em São Paulo 🇧🇷, cursando Tecnologia da Informação. Buscando certificações em AWS, Azure e Oracle Cloud. Sempre construindo coisas que importam.',
-    stat1:'NFSe aprovadas / mês', stat2:'Municípios integrados', stat3:'Produtos automatizados com IA', stat4:'Empresas simultaneamente',
-    exp_label:'02 // experiência', exp_title:'Onde trabalhei',
-    proj_label:'03 // projetos', proj_title:'O que construí',
+    about_p1:'Sou <strong>Rubens Santos</strong>, AI Engineer atuando em <strong>Data &amp; AI</strong> no Itaú Unibanco (EV Digital) e como <strong>Backend Engineer (Java)</strong> na GSF Soluções.',
+    about_p2:'Meu trabalho atravessa dois mundos: implementação de <strong>soluções GenAI</strong> — agentes autônomos no Amazon Bedrock, chatbots RAG e automações com LLM — e construção de sistemas <strong>Java backend robustos</strong> para plataformas fiscais de alto volume (1M+ NFS-e/mês, 100+ municípios).',
+    about_p3:'Baseado em São Paulo 🇧🇷. <strong>AWS Certified AI Practitioner</strong>, cursando Gestão da Tecnologia da Informação. Sempre construindo coisas que importam.',
+    stat1:'NFS-e aprovadas / mês', stat2:'Municípios integrados', stat3:'Produtos automatizados com IA', stat4:'Anos entregando IA aplicada',
+    exp_label:'02 // experiência', exp_title:'Onde trabalhei', current_badge:'ATUAL',
+    proj_label:'03 // projetos', proj_title:'O que construí', proj_featured:'Destaques', proj_more:'Outros projetos',
     skills_label:'04 // habilidades', skills_title:'Stack técnica',
-    skills_cat1:'Backend / Java', skills_cat2:'AI / GenAI Engineering', skills_cat3:'Dados & Infraestrutura',
+    skills_cat1:'Backend / Java', skills_cat2:'AI / GenAI Engineering', skills_cat3:'Dados & Cloud',
     edu_label:'05 // educação & certificações', edu_title:'Formação', edu_heading:'Educação', cert_heading:'Certificações',
-    edu1_deg:'CST em Tecnologia da Informação', edu1_period:'2024 — 2026 · em andamento',
-    edu2_deg:'Bacharelado em Administração',
+    edu1_deg:'Tecnologia em Gestão da Tecnologia da Informação', edu1_period:'2024 — 2026 · em andamento',
+    edu2_deg:'Bacharelado em Administração de Empresas',
+    cert_all:n=>`Ver todas as certificações (${n})`, cert_verify:'↗ verificar',
+    cert_cats:{ai:'🤖 IA / GenAI', cloud:'☁️ Cloud / AWS', java:'☕ Java', data:'📊 Dados'},
+    months:['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'],
     contact_label:'06 // contato', contact_title:'Vamos construir<br>algo juntos?',
     contact_desc:'Aberto a oportunidades como AI Engineer, Backend Engineer (Java/Cloud), Solutions Architect ou Tech Lead. Me manda uma mensagem — respondo rápido.',
     footer_l:'Feito por <span>Rubens Santos</span>',
     experiences: [
-      { current:true, company:'Itaú Unibanco', role:'Analista de Dados — EV Digital', period:'Abr 2026 — Presente', desc:'Atuação na área de dados e negócios digitais do maior banco privado da América Latina. Contribuindo para iniciativas de dados e transformação digital em ambiente ágil de alta escala dentro do ecossistema EV Digital.', tags:['Dados & Analytics','Transformação Digital','Agile','Fintech'] },
-      { current:false, company:'GSF Soluções', role:'Desenvolvedor Java', period:'Out 2025 — Mai 2026', desc:'Desenvolvimento e manutenção de plataforma de emissão de NFSe de alto volume: +1 milhão de notas aprovadas/mês em 100+ municípios brasileiros. Integrações ABRASF, ISSNet e SOAP/REST, evolução do sistema para a Reforma Tributária e gerenciamento de multithreading JVM para alta disponibilidade.', tags:['Java SE','Oracle DB','SOAP/REST','XML','n8n','GitLab CI/CD'] },
-      { current:false, company:'Tremed — Material Médico', role:'Engenheiro de Software', period:'Set 2024 — Jan 2026', desc:'Liderança técnica em automações com IA para o setor de saúde. Sistema Agentic AI para recomendação de licitações, chatbot RAG com ingestão de PDFs, automação de classificação fiscal NCM para 50.000+ produtos com Azure OpenAI (com checkpoints de resiliência) e pipeline ETL SharePoint → banco de dados.', tags:['Python','Azure OpenAI','LangChain','PostgreSQL','n8n','Docker','React/TypeScript'] },
+      { current:true, company:'Itaú Unibanco', role:'Data & AI — EV Digital', period:'Abr 2026 — Presente', bullets:[
+        'Construí um <strong>agente autônomo de monitoramento de dashboards</strong> na AWS — Amazon Bedrock para a análise com LLM, Lambda + EventBridge para execução agendada e Athena para consultar os dados.',
+        'Desenvolvi um pipeline de <strong>relatórios HTML dinâmicos</strong> a partir de consultas no Athena, com Python e BeautifulSoup.',
+        'Criei <strong>agentes no Microsoft 365 Copilot</strong> para produtividade do time.',
+        'Iniciativas de dados em ambiente ágil de grande escala, no <strong>maior banco privado da América Latina</strong>.'
+      ], tags:['Python','Amazon Bedrock','AWS Lambda','Amazon EventBridge','Amazon Athena','SQL','Microsoft 365 Copilot'] },
+      { current:true, company:'GSF Soluções', role:'Backend Engineer (Java) · Consultant', period:'Out 2025 — Presente', bullets:[
+        'Mantenho e evoluo uma plataforma de emissão de NFS-e que processa <strong>1M+ notas aprovadas por mês</strong>.',
+        'Integrações com <strong>100+ municípios brasileiros</strong> via SOAP e REST (ABRASF, ISSNet e outros provedores), lidando com variações de schema XML entre prefeituras.',
+        'Implementei os campos de IBS/CBS da <strong>Reforma Tributária (LC 214/2025)</strong> e o padrão nacional DPS em múltiplos municípios.',
+        'Consultas e rotinas complexas em Oracle (<strong>SQL e PL/SQL</strong>) para processamento e reprocessamento de dados transacionais de alto volume.',
+        'Concorrência, multithreading na JVM e <strong>Spring Batch</strong> para manter disponibilidade sob carga de produção.'
+      ], tags:['Java','Oracle Database','SQL','PL/SQL','Spring Batch','SOAP','REST','XML','GitLab CI/CD','n8n'] },
+      { current:false, company:'Tremed — Materiais Médicos', role:'Software Engineer · AI & Automation', period:'Set 2024 — Jan 2026', bullets:[
+        'Projetei e implantei um <strong>sistema de agentes de IA</strong> que analisa licitações públicas e recomenda em quais participar, cruzando estoque, condições de pagamento e capacidade de entrega.',
+        'Construí um <strong>chatbot RAG</strong> sobre a documentação corporativa, com ingestão de PDFs e busca semântica (LangChain, DeepSeek-R1).',
+        'Automatizei a classificação fiscal NCM de <strong>50.000+ produtos</strong> com Azure OpenAI e checkpoints — eliminando <strong>centenas de horas</strong> de trabalho manual.',
+        'Pipeline ETL SharePoint → MySQL com validação e carga incremental; orquestração de licitações com n8n, XML → JSON e frontend em React/TypeScript.'
+      ], tags:['Python','Azure OpenAI','LangChain','DeepSeek-R1','Pandas','MySQL','PostgreSQL','n8n','Docker','React','TypeScript'] },
     ],
-    projects: [
-      { num:'001', title:'Agentic AI — Sistema de Análise de Licitações', desc:'Solução end-to-end orquestrada com N8N: integração com API via HTTP com gestão de tokens, processamento XML→JSON, e Agente de IA que recomenda as melhores oportunidades de licitação com base em estoque, prazo de pagamento e capacidade de entrega. Front-end em React/TypeScript.', tags:['N8N','PostgreSQL','React/TypeScript','LLMOps','Agentic AI','JavaScript'] },
-      { num:'002', title:'Chatbot Conversacional com Arquitetura RAG', desc:'Chatbot conversacional com arquitetura RAG e LLM DeepSeek-R1. Alimentado com documentos PDF corporativos para responder perguntas complexas baseadas em conteúdo interno — demonstrando domínio prático de recuperação e ajuste de modelos de linguagem de grande porte.', tags:['Python','LangChain','DeepSeek R1','RAG','Vector DB'] },
-      { num:'003', title:'Automação de Classificação Fiscal (NCM)', desc:'Automação da classificação fiscal NCM para 50.000+ produtos com Python e API Azure OpenAI. Processamento autônomo de planilhas com sistema de checkpoints que garante integridade em execuções longas — eliminando centenas de horas de trabalho manual.', tags:['Python','Azure OpenAI','Pandas','Azure'] },
-      { num:'004', title:'Pipeline de ETL — Tratamento de Dados', desc:'Pipeline de ETL automatizado com Python (Pandas) e scheduler para extrair dados do SharePoint, realizar limpeza, padronização e formatação, finalizando com conversão para CSV e carregamento automático em banco de dados MySQL.', tags:['Python','Pandas','SharePoint','MySQL'] },
-      { num:'005', title:'Aplicação Web Full-Stack com Busca Dinâmica', desc:'Aplicação web full-stack com back-end Python/Flask e front-end HTML/CSS/JS conectada ao MySQL. Sistema de cadastro/login e busca dinâmica com SQL para filtragem em tempo real.', tags:['Python','Flask','HTML/CSS','JavaScript','MySQL'] },
-      { num:'006', title:'Python AI Library Hub', desc:'Monorepo Python com três módulos independentes e integráveis: uma API REST FastAPI pronta para produção (SQLAlchemy async, Pydantic v2), um chatbot especialista em Python com LangChain + GPT-4o-mini com memória de conversa, e um motor de busca semântica local com sentence-transformers e FAISS. Desenvolvido com +80% de cobertura de testes, mypy strict, Ruff e CI/CD com GitHub Actions.', tags:['Python','FastAPI','LangChain','FAISS','sentence-transformers','SQLAlchemy','pytest','GitHub Actions'] },
+    featured: [
+      { num:'001', title:'Agentic AI — Análise de Licitações', desc:'Solução end-to-end orquestrada com n8n: integração com API e gestão de tokens, processamento XML→JSON e um agente de IA que recomenda em quais licitações participar com base em estoque, prazo de pagamento e capacidade de entrega.', flow:['APIs de licitação','XML → JSON','Agente de IA','Front React'], tags:['n8n','PostgreSQL','React/TypeScript','Agentic AI'] },
+      { num:'002', title:'Chatbot Conversacional RAG', desc:'Chatbot sobre a documentação corporativa em PDF, com chunking, embeddings e busca semântica, permitindo perguntas complexas em linguagem natural sobre os documentos internos.', flow:['PDFs','Chunks + embeddings','Vector store','DeepSeek-R1'], tags:['Python','LangChain','DeepSeek-R1','RAG'] },
+      { num:'003', title:'Classificação Fiscal com IA (NCM)', desc:'Classificação fiscal NCM de 50.000+ produtos com Azure OpenAI. Checkpoints retomam execuções longas sem reprocessar — eliminando centenas de horas de trabalho manual.', flow:['Planilha','Lotes + checkpoint','Azure OpenAI','Código NCM'], tags:['Python','Azure OpenAI','Pandas'] },
+    ],
+    more: [
+      { title:'Python AI Library Hub', desc:'API FastAPI, chatbot LangChain com memória e busca semântica com FAISS — +80% de cobertura de testes, mypy strict e CI/CD.', tags:['FastAPI','LangChain','FAISS','pytest'], link:'https://github.com/BytesAndTracks/python-ai-library-hub' },
+      { title:'RAG + Agente ReAct sobre PDFs', desc:'RAG totalmente local com agente ReAct que raciocina sobre PDFs, servido via FastAPI.', tags:['Ollama','ChromaDB','FastAPI'] },
+      { title:'Fraud Detection Lakehouse', desc:'Arquitetura Medallion (bronze/silver/gold) no Databricks sobre o PaySim, com dashboard SQL e Genie.', tags:['Databricks','SQL','Genie'] },
+      { title:'Pipeline ETL — SharePoint → MySQL', desc:'Extração agendada com validação, padronização e carga incremental.', tags:['Python','Pandas','MySQL'] },
     ]
   }
 };
 
-let currentLang = 'en';
+const CERTS = [
+  { featured:true, cat:'ai', icon:'🏅', name:'AWS Certified AI Practitioner', issuer:'Amazon Web Services', date:[2026,9], url:'https://www.credly.com/badges/fb56165e-70ab-4a66-aed4-099b425bc4f0/linked_in_profile' },
+  { featured:true, cat:'ai', icon:'🤖', name:'AWS Agentic AI Demonstrated', issuer:'Amazon Web Services', date:[2026,10], url:'https://www.credly.com/badges/42ab05d6-d7da-4164-8ba1-d76f7d719768/linked_in_profile' },
+  { featured:true, cat:'ai', icon:'⚡', name:'Generative AI Fundamentals', issuer:'Databricks', date:[2025,9], url:'https://credentials.databricks.com/b423d7dd-7770-4e1f-88f8-61849b645518' },
+  { cat:'ai', icon:'✨', name:'M365 Copilot — Expert', issuer:'Itaú Unibanco', date:[2026,8], url:'https://www.credly.com/badges/07435285-d880-4ee6-9adf-b9dfa4524aff/linked_in_profile' },
+  { cat:'ai', icon:'✨', name:'M365 Copilot — Trained', issuer:'Itaú Unibanco', date:[2026,7], url:'https://www.credly.com/badges/bbb2b957-70c2-47bd-b4a8-73f06a1437c7/linked_in_profile' },
+  { cat:'ai', icon:'🧠', name:'Claude 101', issuer:'Anthropic', date:[2026,5], url:'https://verify.skilljar.com/c/3q4rp72w56q6' },
+  { cat:'ai', icon:'🤖', name:'AI Agent Fundamentals', issuer:'Databricks', date:[2025,9], url:'https://credentials.databricks.com/612977cc-fe94-460b-9420-22b20bb0407f' },
+  { cat:'ai', icon:'🧱', name:'Databricks Fundamentals', issuer:'Databricks', date:[2025,9], url:'https://credentials.databricks.com/cd56346b-4de8-4934-b709-e4c2de7b6b59' },
+  { cat:'cloud', icon:'🗄️', name:'AWS Educate: Getting Started with Storage', issuer:'Amazon Web Services', date:[2025,7], url:'https://www.credly.com/badges/a4e0f5ee-e2ac-4ade-9efc-362bd4bec749/linked_in_profile' },
+  { cat:'cloud', icon:'☁️', name:'AWS Cloud Technical Essentials', issuer:'Amazon Web Services', date:[2024,5], url:'https://www.coursera.org/account/accomplishments/records/TQE2Q7A6GP8G' },
+  { cat:'java', icon:'🧩', name:'Java Object-Oriented Programming', issuer:'LinkedIn Learning', date:[2025,12], url:'https://www.linkedin.com/learning/certificates/9f848c6d9ef4e5a642d1ecd10bead849fd6cd83aef273cd289c6802481abd53b' },
+  { cat:'java', icon:'🔧', name:'Java Refactoring Best Practices', issuer:'LinkedIn Learning', date:[2025,12], url:'https://www.linkedin.com/learning/certificates/aea8082f1895132955d816b3b1e9d5b7ac8948f51f9bed7551f3b31b3e38a6e7' },
+  { cat:'data', icon:'📈', name:'Practitioner — D&amp;A Foundation', issuer:'Itaú Unibanco', date:[2026,7], url:'https://www.credly.com/badges/e3f6cb66-dbec-42a1-a58f-0573c98c4f3c/linked_in_profile' },
+  { cat:'data', icon:'📊', name:'Google Data Analytics', issuer:'Google', date:[2024,10], url:'https://www.coursera.org/account/accomplishments/specialization/TZTHFAUVALZY' },
+  { cat:'data', icon:'🏛️', name:'Oracle Database Explorer', issuer:'Oracle', date:[2024,7] },
+];
+
+let currentLang = (() => {
+  try { const v = localStorage.getItem('lang'); if (v === 'en' || v === 'pt') return v; } catch (e) {}
+  return (navigator.language || '').toLowerCase().startsWith('pt') ? 'pt' : 'en';
+})();
 let typedPhrases, phraseIdx = 0, charIdx = 0, deleting = false, typedTimeout;
 
 function renderExperience(lang) {
   const list = document.getElementById('exp-list');
-  list.innerHTML = T[lang].experiences.map((e,i) => `
+  list.innerHTML = T[lang].experiences.map(e => `
     <div class="exp-card${e.current?' current':''} reveal">
       <div class="exp-top">
         <div>
@@ -695,11 +760,11 @@ function renderExperience(lang) {
           <div class="exp-role">${e.role}</div>
         </div>
         <div style="display:flex;align-items:flex-start;gap:.75rem;flex-wrap:wrap;">
-          ${e.current ? '<span class="current-badge">CURRENT</span>' : ''}
+          ${e.current ? `<span class="current-badge">${T[lang].current_badge}</span>` : ''}
           <div class="exp-period">${e.period}</div>
         </div>
       </div>
-      <p class="exp-desc">${e.desc}</p>
+      <ul class="exp-bullets">${e.bullets.map(b=>`<li>${b}</li>`).join('')}</ul>
       <div class="exp-tags">${e.tags.map(t=>`<span class="exp-tag">${t}</span>`).join('')}</div>
     </div>
   `).join('');
@@ -707,23 +772,67 @@ function renderExperience(lang) {
 }
 
 function renderProjects(lang) {
-  const grid = document.getElementById('proj-grid');
-  grid.innerHTML = `<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem;">` +
-    T[lang].projects.map((p,i) => `
+  const L = T[lang];
+  const tags = (arr, cls) => `<div class="proj-tags">${arr.map(t=>`<span class="${cls}">${t}</span>`).join('')}</div>`;
+  const link = p => p.link ? `<a class="proj-link" href="${p.link}" target="_blank" rel="noopener">↗ GitHub</a>` : '';
+  document.getElementById('proj-grid').innerHTML =
+    `<div class="proj-group-label">${L.proj_featured}</div><div class="proj-featured">` +
+    L.featured.map(p => `
       <div class="proj-card reveal">
         <div class="proj-num">${p.num}</div>
         <div class="proj-title">${p.title}</div>
         <p class="proj-desc">${p.desc}</p>
-        <div class="proj-tags">${p.tags.map(t=>`<span class="p-tag">${t}</span>`).join('')}</div>
-      </div>
-    `).join('') + `</div>`;
+        <div class="proj-flow">${p.flow.map(f=>`<span class="flow-step">${f}</span>`).join('<span class="flow-arrow">→</span>')}</div>
+        ${tags(p.tags,'p-tag')}${link(p)}
+      </div>`).join('') +
+    `</div><div class="proj-group-label more">${L.proj_more}</div><div class="proj-more">` +
+    L.more.map((p,i) => `
+      <div class="pm-row reveal">
+        <div class="pm-num">${String(L.featured.length+i+1).padStart(3,'0')}</div>
+        <div>
+          <div class="pm-title"><span>${p.title}</span>${link(p)}</div>
+          <p class="pm-desc">${p.desc}</p>
+          ${tags(p.tags,'p-tag')}
+        </div>
+      </div>`).join('') + `</div>`;
   observeReveals();
 }
+
+function renderCerts(lang) {
+  const L = T[lang];
+  const date = d => `${L.months[d[1]-1]} ${d[0]}`;
+  const feat = CERTS.filter(c => c.featured);
+  const rest = CERTS.filter(c => !c.featured);
+  const featHtml = feat.map(c => {
+    const inner = `<div class="cert-icon">${c.icon}</div><div class="cert-name">${c.name}</div><div class="cert-issuer">${c.issuer} · ${date(c.date)}</div>${c.url ? `<div class="cert-verify">${L.cert_verify}</div>` : ''}`;
+    return c.url ? `<a href="${c.url}" target="_blank" rel="noopener" class="cert-feat">${inner}</a>` : `<div class="cert-feat">${inner}</div>`;
+  }).join('');
+  const item = c => {
+    const left = `<div class="cert-left"><div class="cert-icon">${c.icon}</div><div><div class="cert-name">${c.name}</div><div class="cert-issuer">${c.issuer} · ${date(c.date)}</div></div></div>`;
+    return c.url ? `<a href="${c.url}" target="_blank" rel="noopener" class="cert-item">${left}<div class="cert-verify">${L.cert_verify}</div></a>` : `<div class="cert-item" style="cursor:default;">${left}</div>`;
+  };
+  const groups = Object.keys(L.cert_cats).map(k => {
+    const items = rest.filter(c => c.cat === k);
+    return items.length ? `<div class="cert-cat-label">${L.cert_cats[k]}</div>${items.map(item).join('')}` : '';
+  }).join('');
+  const wrap = document.getElementById('cert-wrap');
+  const wasOpen = wrap.querySelector('details')?.open;
+  wrap.innerHTML = `<div class="cert-featured">${featHtml}</div><details class="cert-more"${wasOpen?' open':''}><summary>${L.cert_all(rest.length)}</summary><div class="cert-grid">${groups}</div></details>`;
+}
+
+function toggleNav(force) {
+  const links = document.querySelector('.nav-links');
+  const btn = document.querySelector('.nav-burger');
+  const open = typeof force === 'boolean' ? force : !links.classList.contains('open');
+  links.classList.toggle('open', open);
+  btn.setAttribute('aria-expanded', String(open));
+}
+document.querySelectorAll('.nav-links a').forEach(a => a.addEventListener('click', () => toggleNav(false)));
 
 function applyLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const key = el.dataset.i18n;
-    if (T[lang][key] !== undefined) el.textContent = T[lang][key];
+    if (typeof T[lang][key] === 'string') el.textContent = T[lang][key];
   });
   document.querySelectorAll('[data-i18n-html]').forEach(el => {
     const key = el.dataset.i18nHtml;
@@ -731,13 +840,20 @@ function applyLang(lang) {
   });
 }
 
-function setLang(lang) {
-  if (lang === currentLang) return;
-  currentLang = lang;
+function renderAll(lang) {
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent.trim().toLowerCase() === lang));
   applyLang(lang);
   renderExperience(lang);
   renderProjects(lang);
+  renderCerts(lang);
+}
+
+function setLang(lang) {
+  if (lang === currentLang) return;
+  currentLang = lang;
+  try { localStorage.setItem('lang', lang); } catch (e) {}
+  renderAll(lang);
   updateChatLang(lang);
   typedPhrases = T[lang].typed;
   phraseIdx = 0; charIdx = 0; deleting = false;
@@ -780,9 +896,8 @@ window.addEventListener('scroll', () => {
 }, { passive: true });
 
 // Init
-typedPhrases = T.en.typed;
-renderExperience('en');
-renderProjects('en');
+typedPhrases = T[currentLang].typed;
+renderAll(currentLang);
 observeReveals();
 type();
 
@@ -790,19 +905,22 @@ type();
 let chatOpen = false;
 let chatHistory = [];
 let chatBusy = false;
+const CHAT_MAX_CHARS = 500;
 
 const chatI18n = {
   en: {
     hname: 'Ask about Rubens',
     placeholder: 'Ask anything about Rubens...',
     greeting: "Hi! 👋 I'm Rubens's AI assistant. Ask me anything about his experience, skills or projects!",
-    suggs: ['What do you currently work on?', 'Tell me about your AI projects', 'Open to remote work?', "What's your tech stack?", 'What are your hobbies?']
+    suggs: ['What do you currently work on?', 'Tell me about your AI projects', "What's your tech stack?", 'Which certifications do you have?'],
+    connErr: 'Connection error. Please try again.'
   },
   pt: {
     hname: 'Pergunte sobre o Rubens',
     placeholder: 'Pergunte qualquer coisa sobre o Rubens...',
     greeting: 'Olá! 👋 Sou o assistente de IA do Rubens. Me pergunte qualquer coisa sobre sua experiência, habilidades ou projetos!',
-    suggs: ['No que você trabalha atualmente?', 'Fale sobre seus projetos de IA', 'Aberto a trabalho remoto?', 'Qual é o seu tech stack?', 'Quais são seus hobbies?']
+    suggs: ['No que você trabalha atualmente?', 'Fale sobre seus projetos de IA', 'Qual é o seu tech stack?', 'Quais certificações você tem?'],
+    connErr: 'Erro de conexão. Tente novamente.'
   }
 };
 
@@ -816,7 +934,7 @@ function updateChatLang(lang) {
   const suggEl = document.getElementById('chatSuggs');
   if (suggEl) {
     suggEl.innerHTML = c.suggs.map(s =>
-      `<button class="csugg" onclick="sendSugg(this)">${s}</button>`
+      `<button class="csugg" onclick="sendSugg(this)">${escapeHtml(s)}</button>`
     ).join('');
   }
   // Update initial greeting if no conversation started yet
@@ -832,11 +950,30 @@ function toggleChat() {
   if (chatOpen) setTimeout(() => document.getElementById('chatInput').focus(), 300);
 }
 
+function escapeHtml(str) {
+  return String(str).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+}
+
+// Texto sempre escapado (nunca HTML vindo do modelo ou do visitante); só links da allowlist viram <a>.
+const CHAT_LINK_HOSTS = ['rubens-dev.vercel.app','linkedin.com','www.linkedin.com','github.com','www.credly.com','credly.com'];
+function formatMsg(text) {
+  let html = escapeHtml(text).replace(/\n/g, '<br>');
+  html = html.replace(/https?:\/\/[^\s<)]+/g, url => {
+    try {
+      const u = new URL(url.replace(/&amp;/g, '&'));
+      if (CHAT_LINK_HOSTS.includes(u.hostname) && u.protocol === 'https:') return `<a href="${url}" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;">${url}</a>`;
+    } catch (e) {}
+    return url;
+  });
+  html = html.replace(/\b([A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,})\b/g, m => m === 'rubens8965@gmail.com' ? `<a href="mailto:${m}" style="color:inherit;text-decoration:underline;">${m}</a>` : m);
+  return html;
+}
+
 function addMsg(text, role) {
   const msgs = document.getElementById('chatMessages');
   const div = document.createElement('div');
   div.className = 'cmsg ' + role;
-  div.innerHTML = '<div class="cmsg-bubble">' + text.replace(/\n/g, '<br>') + '</div>';
+  div.innerHTML = '<div class="cmsg-bubble">' + formatMsg(text) + '</div>';
   msgs.appendChild(div);
   msgs.scrollTop = msgs.scrollHeight;
 }
@@ -868,7 +1005,7 @@ function sendSugg(btn) {
 async function sendMsg(override) {
   if (chatBusy) return;
   const input = document.getElementById('chatInput');
-  const text = override || input.value.trim();
+  const text = String(override || input.value).trim().slice(0, CHAT_MAX_CHARS);
   if (!text) return;
   input.value = '';
   hideSuggs();
@@ -880,21 +1017,27 @@ async function sendMsg(override) {
     const res = await fetch('/api/chat', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: chatHistory, lang: currentLang })
+      body: JSON.stringify({ messages: chatHistory.slice(-12), lang: currentLang })
     });
-    const data = await res.json();
+    const data = await res.json().catch(() => ({}));
     removeTyping();
-    const reply = data.reply || data.error || 'Something went wrong, please try again.';
-    addMsg(reply, 'bot');
-    chatHistory.push({ role: 'assistant', content: reply });
+    if (res.ok && typeof data.reply === 'string') {
+      addMsg(data.reply, 'bot');
+      chatHistory.push({ role: 'assistant', content: data.reply, sig: data.sig });
+    } else {
+      chatHistory.pop(); // mensagem não respondida sai do histórico
+      addMsg(typeof data.error === 'string' ? data.error : chatI18n[currentLang].connErr, 'bot');
+    }
   } catch(e) {
     removeTyping();
-    addMsg('Connection error. Please try again.', 'bot');
+    chatHistory.pop();
+    addMsg(chatI18n[currentLang].connErr, 'bot');
   }
   chatBusy = false;
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+  updateChatLang(currentLang);
   const inp = document.getElementById('chatInput');
   if (inp) inp.addEventListener('keydown', e => { if (e.key === 'Enter') sendMsg(); });
 });
@@ -921,12 +1064,12 @@ document.addEventListener('DOMContentLoaded', () => {
       <div class="chat-suggestions" id="chatSuggs">
         <button class="csugg" onclick="sendSugg(this)">What do you currently work on?</button>
         <button class="csugg" onclick="sendSugg(this)">Tell me about your AI projects</button>
-        <button class="csugg" onclick="sendSugg(this)">Open to remote work?</button>
         <button class="csugg" onclick="sendSugg(this)">What's your tech stack?</button>
+        <button class="csugg" onclick="sendSugg(this)">Which certifications do you have?</button>
       </div>
     </div>
     <div class="chat-input-row">
-      <input type="text" id="chatInput" placeholder="Ask anything about Rubens..." />
+      <input type="text" id="chatInput" maxlength="500" autocomplete="off" placeholder="Ask anything about Rubens..." />
       <button class="chat-send-btn" onclick="sendMsg()">↑</button>
     </div>
     <div class="chat-powered">✦ rubens.dev · AI-powered by Claude</div>
