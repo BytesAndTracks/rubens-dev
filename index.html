@@ -912,14 +912,14 @@ const chatI18n = {
     hname: 'Ask about Rubens',
     placeholder: 'Ask anything about Rubens...',
     greeting: "Hi! 👋 I'm Rubens's AI assistant. Ask me anything about his experience, skills or projects!",
-    suggs: ['What do you currently work on?', 'Tell me about your AI projects', "What's your tech stack?", 'Which certifications do you have?'],
+    suggs: ['What do you currently work on?', 'Tell me about your AI projects', "What's your tech stack?", 'Which certifications do you have?', 'What are your hobbies?'],
     connErr: 'Connection error. Please try again.'
   },
   pt: {
     hname: 'Pergunte sobre o Rubens',
     placeholder: 'Pergunte qualquer coisa sobre o Rubens...',
     greeting: 'Olá! 👋 Sou o assistente de IA do Rubens. Me pergunte qualquer coisa sobre sua experiência, habilidades ou projetos!',
-    suggs: ['No que você trabalha atualmente?', 'Fale sobre seus projetos de IA', 'Qual é o seu tech stack?', 'Quais certificações você tem?'],
+    suggs: ['No que você trabalha atualmente?', 'Fale sobre seus projetos de IA', 'Qual é o seu tech stack?', 'Quais certificações você tem?', 'Quais são seus hobbies?'],
     connErr: 'Erro de conexão. Tente novamente.'
   }
 };
@@ -1066,6 +1066,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <button class="csugg" onclick="sendSugg(this)">Tell me about your AI projects</button>
         <button class="csugg" onclick="sendSugg(this)">What's your tech stack?</button>
         <button class="csugg" onclick="sendSugg(this)">Which certifications do you have?</button>
+        <button class="csugg" onclick="sendSugg(this)">What are your hobbies?</button>
       </div>
     </div>
     <div class="chat-input-row">
